@@ -4,13 +4,9 @@ var Schema = mongoose.Schema
 var commentSchema = new Schema({
   title: String,
   author: String,
-  body: String,
-  article : {
-    type:Schema.Types.ObjectId,
-    ref : 'article'
-  }
+  body: String
 })
 
-var Comment = mongoose.model('Comment', commentSchema)
+//var Comment = mongoose.model('Comment', commentSchema)
 
-module.exports = Comment
+module.exports = commentSchema

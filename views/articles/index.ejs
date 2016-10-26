@@ -5,9 +5,12 @@
 
 <ul>
   <%allArticles.forEach(function(article){%>
-    <li><%=article.title%></br>
-        <%=article.body %>
-    </li>
+     <ul>
+    <li><strong>Title :</strong><%=article.title%></li>
+    <li><%=article.body %></li>
+    <li><a href ="/new-comment">Click here to judge this post</a></li>
+    <li><strong>Comments :</strong><%=article.comment %></li>
+    </ul>
     <%})%>
 </ul>
 

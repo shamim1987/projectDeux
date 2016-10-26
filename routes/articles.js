@@ -5,7 +5,7 @@ var article = require('../models/article')
 router.route('/articles')
  .get(function (req, res) {
    article.find({},
-     function(err, allArticles) {
+     function (err, allArticles) {
        res.render('articles/index', {allArticles: allArticles})
      })
  })
@@ -28,8 +28,8 @@ router.route('/new-article')
     res.render('./articles/new')
   })
   .post(function (req, res) {
-    article.create(req.body.article, function(err, allArticles) {
-    res.redirect('articles'),{allArticles: allArticles}
+    article.create(req.body.article, function (err, allArticles) {
+    res.redirect('articles'), {allArticles: allArticles}
     })
   })
 

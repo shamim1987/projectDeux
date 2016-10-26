@@ -20,7 +20,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(morgan('dev'))
 app.set('view engine', 'ejs')
 app.use(layout)
-
 app.use(session({
   secret: process.env.EXPRESS_SECRET,
   resave: true,
@@ -40,7 +39,7 @@ app.use(express.static(__dirname + '/public'))
 var articlefrontendRoutes = require('./routes/articles')
 //var articleAjaxRoutes = require('./routes/articles_api')
 var usersRoutes = require('./routes/users')
-// var commentfrontendRoutes = require('./routes/comments')
+var commentfrontendRoutes = require('./routes/comments')
 // var commentajaxRoutes = require('./routes/comments_api')
 
 app.use(bodyParser.urlencoded({
@@ -52,6 +51,7 @@ require('./config/passport')(passport)
 app.use('/', articlefrontendRoutes) // only render ejs files
 app.use('/', usersRoutes)
 // app.use('/api/users', usersAPIRoutes)
+app.use('/', commentfrontendRoutes)
 
 app.listen(process.env.PORT || 4000)
 console.log('Server started')

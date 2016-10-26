@@ -14,4 +14,5 @@ user uses his username and password to sign in. This is authenticated against hi
 3.Posting Blogs
 upon successful authentication, user is presented rendered HTML which comprises a title and article field as well as a submit button. The user titles his post to his liking and writes the same. When the user presses submit, like the user details, the entire post is routed via mongoose and stored as an object on mongoDB with a unique ID.
 
-4. 
+4. Commenting
+Any netizen can post comments on posts. The netizen inputs his name  , titles his post 

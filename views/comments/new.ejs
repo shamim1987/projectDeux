@@ -1,11 +1,17 @@
 <h2>Welcome, this is where you judge !</h2>
-<form class="new-comment" action="/comments" method="post">
+<div class="logout">
+<button type="button"><a href="/logout">Logout</a></button>
+</div>
+<form class="new-comment" action="/new-comments" method="post">
   <div class="column">
-    <div class="two rows">
-      <input type="text" name="article[title]" id="article-title" placeholder="What's it gonna be champ?" class="u-full-width">
+    <div class="three rows">
+      <input type="text" name="comment[author]" id="article-title" placeholder="Votre nom monsieur?" class="u-full-width">
+    </div>
+    <div class="three rows">
+      <input type="text" name="comment[title]" id="article-title" placeholder="What's it gonna be champ?" class="u-full-width">
     </div>
     <div class="two rows">
-      <input type="text" name="article[body]" id="article-post" placeholder="Fire away!" class="u-full-width">
+      <input type="text" name="comment[body]" id="article-post" placeholder="Fire away!" class="u-full-width">
     </div>
     <input type="submit" value='Rock you like a hurricane!'>
   </div>
