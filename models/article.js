@@ -1,10 +1,14 @@
 var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+//var commentSchema = require('comment')
 
-var articleSchema = new mongoose.Schema({
+var articleSchema = new Schema({
   title: String,
-  post:String,
+  body: String
+  //comment: [commentSchema]
+  //date: { type: Date, default: Date.now }
 })
 
-var article = mongoose.model('article', articleSchema)
+var Article = mongoose.model('Article', articleSchema)
 
-module.exports = Song
+module.exports = Article

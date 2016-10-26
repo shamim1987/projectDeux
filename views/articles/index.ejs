@@ -1,18 +1,14 @@
-<h2>list all donuts</h2>
-<form class="new-donut">
-  <div class="row">
-    <div class="six columns">
-      <input type="text" name="donut[flavor]" id="donut-flavor" placeholder="Your donut name" class="u-full-width">
-    </div>
-    <div class="six columns">
-      <input type="text" name="donut[type]" id="donut-type" placeholder="Your donut type" class="u-full-width">
-    </div>
-    <input type="submit" value='Save My Donut'>
-  </div>
-</form>
+<h2>Weather it's here or there, it's everywhere.</h2>
+<div class="post">
+<button type="button" name="article[new]"> <a href="/new-article">New Post!</a></button>
+</div>
 
+<ul>
+  <%allArticles.forEach(function(article){%>
+    <li><%=article.title%></br>
+        <%=article.body %>
+    </li>
+    <%})%>
+</ul>
 
-<% allDonuts.forEach(function(donut) { %>
-  <li><%= donut.flavor %></li>
-  <li><%= donut.type %></li>
-<% }) %>
+<a href="/logout">Logout</a>

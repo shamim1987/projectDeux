@@ -1,0 +1,47 @@
+Project Submission
+
+Host your entire application on Heroku
+Soft launch of your project is on Heroku by Wednesday 26th October 2016.
+Submit the links at the Project 2 submission page
+The deadline for this project is on Friday 28th October 2016, 8am
+Before the deadline ensure that the master branch contains your latest project code.
+Before the deadline ensure that your apps are successfully deployed to Heroku
+Overview
+
+This second project is your first foray into building a full-stack application. You'll be building a Node app which serves an API and a front-end application which consumes the API.
+This is exciting! It sounds like a lot, but you already have all the tools to build them! Get creative in choosing what sort of application you want to build!
+You will be working individually for this project, and you'll be designing the app yourself. We hope you'll exercise creativity on this project, sketch some wireframes before you start, and write user stories to define what your users will want to do with the app. Make sure you have time to run these ideas by your instructors to get their feedback before you dive too deep into code! Remember to keep things small and focus on mastering the fundamentals – scope creep/feature creep is the biggest pitfall for any project!
+Project 2A: Blog
+
+Develop a blog with the below minimum technical requirements.
+Project 2B: Freestyle App
+
+Develop your own personal project with the below minimum technical requirements.
+Technical Requirements
+
+Deliverables include:
+Node back-end server
+Include sign up/log in functionality, with encrypted passwords and an authorization flow
+Made with Mongoose and Express (validate otherwise)
+API should be created using at least 3 related models ( more if they make sense )
+Generate views using templates
+Project 2A, your models should be:
+User - someone using your application
+Post - blog posts
+Comment - comments on the posts.
+Project 2B:
+one user model
+remaining models - depending on functional idea
+Include all major CRUD functions in a RESTful API for at least one of those models
+Front-end application
+Layout and style your front-end with clean & well-formatted CSS
+Overall
+Craft thoughtful user stories
+ER and user flow diagrams
+Deploy your application online so it's publicly accessible
+Optional
+Consume your own API with AJAX calls to the back-end server
+Incorporate external APIs
+Consumed by your front-end application
+Consumed by your back-end application in the models
+Feel free to utilize and combine a few external APIs to create a more useful API
