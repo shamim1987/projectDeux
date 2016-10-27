@@ -1,19 +1,32 @@
-<h2>Welcome, please join the discussion</h2><br>
+<h2>Welcome, please join the discussion</h2>
 
-<p>OR</p>
+<div class="row">
+  <div class="col-md-4"><a href="/articles" class="btn btn-default btn-lg active" role="button">Back to Index</a></div>
+  <div class="col-md-4 col-md-offset-4"><a href="/logout" class="btn btn-default btn-lg active" role="button">Logout</a>
+  </div>
 
-<div class="logout">
-<button type="button"><a href="/logout">Logout</a></button>
+<div class="row">
+
 </div>
 
-<form class="new-post" action="/new-article" method="post">
-  <div class="column">
-    <div class="two rows">
-      <input type="text" name="article[title]" id="article-title" placeholder="What's it gonna be champ?" class="u-full-width">
+<form class="form-horizontal" action="/new-article" method="post" id="articleForm">
+
+    <div class="form-group">
+      <label for="">Title</label>
+        <div class="col-sm-10">
+        <input type="text" name="article[title]"  class="form-control"  placeholder="What's it gonna be champ?" >
+        </div>
     </div>
-    <div class="two rows">
-      <input type="text" name="article[body]" id="article-post" placeholder="Fire away!" class="u-full-width">
+    <div class="form-group">
+      <label for="">Article</label>
+      <div class="col-sm-10">
+        <textarea name="article[body]"  placeholder="Fire away!" class="form-control" form="articleForm"> </textarea>
+      </div>
     </div>
-    <input type="submit" value='Rock you like a hurricane!'></input>
-  </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Rock you like a hurricane!</button>
+      </div>
+    </div>
+    <input type="hidden" name="article[user]" value="<%=user.id%>">
 </form>

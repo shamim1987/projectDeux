@@ -2,3 +2,56 @@
 input[type="submit"], input[type="submit"]:hover {
   color: white;
 }
+
+body {
+  background-repeat: no-repeat;
+  background-image: url(http://blog-content.ixigo.com/wp-content/uploads/2016/05/shutterstock_115530379-770x430.jpg);
+  background-size: cover;
+  margin: 0 auto;
+  font-color:
+}
+
+ul {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+input {
+  margin: 0 auto;
+}
+
+.logout {
+  margin: 10px auto;
+}
+
+a {
+  margin: 0 auto;
+  color: red;
+}
+
+aside {
+  float: left;
+
+}
+li {
+list-style-type: none;
+color: white;
+margin-bottom: 10px;
+}
+
+.article_container{
+  margin-top: 30px;
+  border: 1px solid black;
+}
+.row {
+  margin-top: 20px;
+}
+
+.article {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+form {
+  margin-top: 20px;
+}

@@ -1,0 +1,28 @@
+<h2>This is where you view a post and it's judgement</h2>
+
+<div class="row">
+  <div class="col-md-4"><a href="/articles" class="btn btn-default btn-lg active" role="button">Back to Index</a></div>
+  <div class="col-md-4 col-md-offset-4"><button type="button" class="btn btn-default"><a href="/logout">Logout</a></button>
+  </div>
+</div>
+
+  <div class="article_container">
+    <ul>
+      <li><strong>Author ID:</strong><%=article.user %></li>
+      <li><strong>Title :</strong><%=article.title%></li>
+      <li><strong>Article: </strong><%=article.body %></li>
+      <li><a href ="/<%=article._id%>/new-comment/">Click here to add a comment</a></li>
+      <li><a href ="/articles/<%=article._id %>/edit">Click here to edit this post</a></li>
+      <li><a href ="#" >Click here to delete this post</a></li>
+      <li><strong>Comments : </strong>
+     <%article.comment.forEach(function(comment){%>
+       <ul>
+         <li><strong>Author: </strong><%=comment.author %></li>
+         <li><strong>Title: </strong><%=comment.title %></li>
+         <li><strong>Body: </strong><%=comment.body %></li>
+         <li><a href="#">Click here to remove this comment</a></li>
+       </ul>
+       <%})%>
+     </li>
+  </ul>
+  </div>

@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var passport = require('passport')
-
+//SIGNUP ROUTE
 router.route('/signup')
   .get(function (req, res) {
     res.render('users/signup')
@@ -11,7 +11,7 @@ router.route('/signup')
     failureRedirect: '/test',
     failureFlash: true
   }))
-
+//LOGIN ROUTE
 router.route('/login')
   .get(function (req, res) {
     res.render('users/signin', {
@@ -29,6 +29,8 @@ router.get('/profile', function (req, res) {
     res.render('users/profile', { message: req.flash('loginMessage') })
 })
 */
+
+//LOGOUT ROUTE
 router.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/login')

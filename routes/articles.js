@@ -1,36 +1,61 @@
 var express = require('express')
 var router = express.Router()
-var article = require('../models/article')
-
+var Article = require('../models/article')
+//ARTICLE MAIN PAGE
 router.route('/articles')
  .get(function (req, res) {
-   article.find({},
-     function (err, allArticles) {
-       res.render('articles/index', {allArticles: allArticles})
-     })
+    //res.send(req.user._id)
+    Article.find({user:req.user.id},function (err, allArticles) {
+     res.render('articles/index', {allArticles: allArticles})
+    })
  })
-
+//INDIVIDUAL ARTICLE PAGE
 router.route('/articles/:id')
 .get(function (req, res) {
-  article.findById(req.params.id, function (err, data) {
+  Article.findById(req.params.id, function (err, article) {
     if (err) {
        //res.flash('something wrong happened' + err)
       res.redirect('/articles')
     } else {
-      console.log('post new article')
-      res.send(data)
+      res.render('articles/soloart', {article: article})
     }
   })
 })
-
+//POST NEW ARTICLE
 router.route('/new-article')
   .get(function (req, res) {
-    res.render('./articles/new')
+    res.render('articles/new', { user: req.user} )
   })
   .post(function (req, res) {
-    article.create(req.body.article, function (err, allArticles) {
+    Article.create(req.body.article, function (err, allArticles) {
     res.redirect('articles'), {allArticles: allArticles}
     })
   })
+//EDIT ARTICLE
+router.route('/articles/:id/edit')
+  .get(function (req, res) {
+    //res.render('./articles/edit-article')
+    Article.findById(req.params.id, function (err, article) {
+      if (err) {
+         //res.flash('something wrong happened' + err)
+        res.redirect('/articles')
+      } else {
+        res.render('articles/edit_article', {article: article})
+      }
+    })
+  })
+    .post(function (req, res) {
+      Article.findByIdAndUpdate (req.params.id, { $set: {title: req.body.article.title, body: req.body.article.body} }, function (err, article) {
+        if (err) {
+          console.log(err)
+          res.redirect('/articles')
+        } else {
+          res.redirect('/articles/:id')
+        }
+      })
+    })
+  //DELETE ARTICLE
+router.route('/articles/:id/delete')
+  .get()
 
 module.exports = router

@@ -1,12 +1,13 @@
 <h1>Come on in and bring the weather with you!</h1>
-<form class="login-user" action="/login" method="post">
-  <div class="row">
-    <div class="six columns">
-      <input type="text" name="user[local][email]" placeholder="Your email" class="u-full-width">
+
+<form class="form-inline" action="/login" method="post">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+      <input type="email" name="user[email]" placeholder="Your email" class="form-control" id="exampleInputEmail3">
     </div>
-    <div class="six columns">
-      <input type="text" name="user[local][password]" placeholder="Your password" class="u-full-width">
+    <div class="form-group">
+      <label class="sr-only" for="exampleInputEmail3">Email address</label>
+      <input type="password" name="user[password]" placeholder="Your password" class="form-control" id="exampleInputPassword3">
     </div>
-    <input type="submit" value='Log in'></input>
-  </div>
+    <button type="submit" class="btn btn-default">Sign in</button>
 </form>

@@ -2,7 +2,6 @@ var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
 var User = require('../models/user')
 
-
 module.exports = function (passport) {
   passport.serializeUser(function (user, done) {
     done(null, user.id)
@@ -15,13 +14,13 @@ module.exports = function (passport) {
   })
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'user[local][email]',
-    passwordField: 'user[local][password]',
+    usernameField: 'user[email]',
+    passwordField: 'user[password]',
     passReqToCallback: true
   }, function (req, email, password, next) {
     // the authentication flow on our local auth routes
 
-    User.findOne({'local.email': email }, function (err, foundUser) {
+    User.findOne({'email': email }, function (err, foundUser) {
       // if user is found, dont create new user
       // if user is not found, create new user
 
@@ -38,14 +37,14 @@ module.exports = function (passport) {
   }))
 
   passport.use('local-login', new LocalStrategy({
-    usernameField: 'user[local][email]',
-    passwordField: 'user[local][password]',
+    usernameField: 'user[email]',
+    passwordField: 'user[password]',
     passReqToCallback: true
   }, function (req, email, password, next) {
     console.log('authenticating with given email and password')
     console.log(email, password)
 
-    User.findOne({ 'local.email': email }, function (err, foundUser) {
+    User.findOne({ 'email': email }, function (err, foundUser) {
       if (err) return next(err)
 
         // if cannot find use by email, return to route with flash message
@@ -55,7 +54,7 @@ module.exports = function (passport) {
 
       foundUser.auth(password, function (err, authenticated) {
         if (err) return next(err)
-          console.log(foundUser)
+        console.log(foundUser)
         if (authenticated) {
           return next(null, foundUser, req.flash('loginMessage', 'Hello logged in user ' + foundUser.email))
         } else {

@@ -1,17 +1,22 @@
 <h2>Weather it's here or there, it's everywhere.</h2>
-<div class="post">
-<button type="button" name="article[new]"> <a href="/new-article">New Post!</a></button>
+
+<div class="row">
+  <div class="col-md-4"><a href="/new-article" class="btn btn-default btn-lg active" role="button">New Post!</a></div>
+  <div class="col-md-4 col-md-offset-4">
+    <a href="/logout" class="btn btn-default btn-lg active" role="button">Logout</a>
+  </div>
 </div>
 
-<ul>
-  <%allArticles.forEach(function(article){%>
-     <ul>
-    <li><strong>Title :</strong><%=article.title%></li>
-    <li><%=article.body %></li>
-    <li><a href ="/new-comment">Click here to judge this post</a></li>
-    <li><strong>Comments :</strong><%=article.comment %></li>
-    </ul>
-    <%})%>
-</ul>
+<div class="row">
 
-<a href="/logout">Logout</a>
+</div>
+
+    <div class="article">
+      <%allArticles.forEach(function(article){%>
+        <ul>
+          <li><strong>Author ID: </strong><%=article.user %></li>
+          <li><strong>Title: </strong><a href="/articles/<%=article._id%>"><%=article.title%></a></li>
+          <li><strong>Article: </strong><%=article.body %></li>
+        </ul>
+        <%})%>
+    </div>
