@@ -24,11 +24,11 @@ router.route('/articles/:id')
 //POST NEW ARTICLE
 router.route('/new-article')
   .get(function (req, res) {
-    res.render('articles/new', { user: req.user} )
+    res.render('articles/new', { user: req.user})
   })
   .post(function (req, res) {
-    Article.create(req.body.article, function (err, allArticles) {
-    res.redirect('articles'), {allArticles: allArticles}
+    Article.create(req.body.article, function (err) {
+    res.redirect('articles')
     })
   })
 //EDIT ARTICLE
@@ -56,6 +56,14 @@ router.route('/articles/:id/edit')
     })
   //DELETE ARTICLE
 router.route('/articles/:id/delete')
-  .get()
+    .get(function (req, res) {
+      Article.findByIdAndRemove(req.params.id, function (err) {
+        if (!err) {
+          res.redirect('/articles/:id')
+        } else {
+          res.send('post not deleted,click back')
+        }
+      })
+    })
 
 module.exports = router

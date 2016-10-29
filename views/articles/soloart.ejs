@@ -13,7 +13,7 @@
       <li><strong>Article: </strong><%=article.body %></li>
       <li><a href ="/<%=article._id%>/new-comment/">Click here to add a comment</a></li>
       <li><a href ="/articles/<%=article._id %>/edit">Click here to edit this post</a></li>
-      <li><a href ="#" >Click here to delete this post</a></li>
+      <li><a href ="/articles/<%=article._id %>/delete" >Click here to delete this post</a></li>
       <li><strong>Comments : </strong>
      <%article.comment.forEach(function(comment){%>
        <ul>
