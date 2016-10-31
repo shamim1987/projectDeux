@@ -43,11 +43,11 @@ router.route('/articles/:id/remove-comment')
 /*
 router.route('/articles/:id/edit-comment')
      .get(function (req, res) {
-       Article.findById(req.params.id, function (err, comment) {
+       Article.findById(req.params.id, function (err, article) {
          if (err) {
            console.log(err)
          } else {
-           res.render('/comments/edit_comment', {comment: comment})
+           res.render('/comments/edit_comment', {article: article})
          }
        })
      })
