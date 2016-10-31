@@ -31,7 +31,7 @@ router.route('/articles/:id/remove-comment')
        })
      })
       .post(function (req, res, comment) {
-        Article.findByIdAndUpdate(req.params.id, {$pull: {comment: req.body.comment}}, function (err) {
+        Article.findByIdAndUpdate(req.params.id, {$pop: {comment: req.body.comment}}, function (err) {
           if (err) {
             console.log(err)
           } else {
