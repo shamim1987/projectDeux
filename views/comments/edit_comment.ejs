@@ -1,0 +1,41 @@
+<h2>Welcome, this is where you judge !</h2>
+<div class="row">
+  <div class="col-md-4"><a href="/articles" class="btn btn-default btn-lg active" role="button">Back to Index</a></div>
+  <div class="col-md-4 col-md-offset-4"><button type="button" class="btn btn-default"><a href="/logout">Logout</a></button></div>
+</div>
+
+<div class="art">
+  <ul>
+    <li><strong>Author: </strong><%=article.user %></li>
+    <li><strong>Title :</strong><a href="/articles/<%=article._id%>"><%=article.title %></a></li>
+    <li><strong>Article</strong><%=article.body %></li>
+  </ul>
+</div>
+
+<form class="form-horizontal" action="/<%=article._id%>/edit-comment" method="post" id="commentForm">
+
+   <div class="form-group">
+    <label for="">Author:</label>
+      <div class="col-sm-10">
+      <input type="text" name="comment[author]"  class="form-control"  placeholder="Who really are you?" >
+      </div>
+   </div>
+    <div class="form-group">
+      <label for="">Title:</label>
+        <div class="col-sm-10">
+        <input type="text" name="comment[title]"  class="form-control"  placeholder="What's it gonna be this time champ?" >
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="">Comment:</label>
+      <div class="col-sm-10">
+        <textarea type="text" name="comment[body]"  placeholder="Again Fire away!" class="form-control" form="commentForm"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Edit!</button>
+      </div>
+    </div>
+
+</form>

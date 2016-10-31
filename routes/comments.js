@@ -31,7 +31,7 @@ router.route('/articles/:id/remove-comment')
        })
      })
       .post(function (req, res, comment) {
-        Article.findByIdAndUpdate(req.params.id, {$pull: {comment: req.body.comment}}, function (err) {
+        Article.findByIdAndUpdate(req.params.id, {$pop: {comment: req.body.comment}}, function (err) {
           if (err) {
             console.log(err)
           } else {
@@ -39,4 +39,26 @@ router.route('/articles/:id/remove-comment')
           }
         })
       })
+//EDIT COMMENT
+/*
+router.route('/articles/:id/edit-comment')
+     .get(function (req, res) {
+       Article.findById(req.params.id, function (err, comment) {
+         if (err) {
+           console.log(err)
+         } else {
+           res.render('/comments/edit_comment', {comment: comment})
+         }
+       })
+     })
+      .post(function (req, res, comment) {
+        Article.findByIdAndUpdate(req.params.id, {$set: {comment: req.body.comment}}, function (err) {
+          if (err) {
+            console.log(err)
+          } else {
+            res.redirect('/articles')
+          }
+        })
+      })
+*/
 module.exports = router

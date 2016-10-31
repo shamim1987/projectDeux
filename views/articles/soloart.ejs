@@ -6,7 +6,6 @@
   </div>
 </div>
 
-
     <ul>
       <li><strong>Author ID:</strong><%=article.user %></li>
       <li><strong>Title :</strong><%=article.title%></li>
@@ -21,6 +20,8 @@
          <li><strong>Title: </strong><%=comment.title %></li>
          <li><strong>Body: </strong><%=comment.body %></li>
          <li><form method="post" action="/articles/<%=article._id %>/remove-comment" ><button type="submit" name="comment[delete]">Delete comment</button></form>
+         </li>
+         <li><form method="post" action="/articles/<%=article._id %>/edit-comment" ><button type="submit" name="comment[edit]">Edit comment</button></form>
          </li>
        </ul>
        <%})%>
