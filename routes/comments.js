@@ -6,8 +6,12 @@ var Article = require('../models/article')
 //NEW COMMENT
 router.route('/:id/new-comment')
       .get(function (req, res) {
-        Article.findById (req.params.id, function (err, article) {
-          res.render('comments/new', {article: article})
+        Article.findById(req.params.id, function (err, article) {
+          if (err) {
+            console.log(err)
+          } else {
+            res.render('comments/new', {article: article})
+          }
         })
       })
       .post(function (req, res) {

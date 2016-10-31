@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var User = require('../models/user')
 var passport = require('passport')
 var flash = require('connect-flash')
 
@@ -9,7 +10,6 @@ function authCheck (req, res, next) {
   // if it's true, redirect back to profile
 
   if (req.isAuthenticated()) {
-    req.flash('signupMessage', 'You have logged in, welcome?')
     return res.redirect('/articles')
   } else {
     return next()
@@ -19,18 +19,29 @@ function authCheck (req, res, next) {
 //SIGNUP ROUTE
 router.route('/signup')
   .get(authCheck, function (req, res) {
-    res.render('users/signup')
+    User.find({}, function (err) {
+      if (err) {
+        console.log(err)
+      } else {
+        res.render('users/signup', {message: req.flash('signupMessage')})
+      }
+    })
   })
   .post(passport.authenticate('local-signup', {
     successRedirect: '/articles',
-    failureRedirect: '/test',
+    failureRedirect: '/signup',
     failureFlash: true
   }))
+
 //LOGIN ROUTE
 router.route('/login')
   .get(authCheck, function (req, res) {
-    res.render('users/signin', {
-      message: req.flash('loginMessage')
+    User.find({}, function (err) {
+      if (err) {
+        console.log(err)
+      } else {
+        res.render('users/signin', {message: req.flash('loginMessage')})
+      }
     })
   })
   .post(passport.authenticate('local-login', {
@@ -38,12 +49,6 @@ router.route('/login')
     failureRedirect: '/login',
     failureFlash: true
   }))
-/*
-router.get('/profile', function (req, res) {
-  res.send(req.user)
-    res.render('users/profile', { message: req.flash('loginMessage') })
-})
-*/
 
 //LOGOUT ROUTE
 router.get('/logout', function (req, res) {
