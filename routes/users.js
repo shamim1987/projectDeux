@@ -1,9 +1,24 @@
 var express = require('express')
 var router = express.Router()
 var passport = require('passport')
+var flash = require('connect-flash')
+
+function authCheck (req, res, next) {
+  // if req.isAuthenticated is false, then let it be
+
+  // if it's true, redirect back to profile
+
+  if (req.isAuthenticated()) {
+    req.flash('signupMessage', 'You have logged in, welcome?')
+    return res.redirect('/articles')
+  } else {
+    return next()
+  }
+}
+
 //SIGNUP ROUTE
 router.route('/signup')
-  .get(function (req, res) {
+  .get(authCheck, function (req, res) {
     res.render('users/signup')
   })
   .post(passport.authenticate('local-signup', {
@@ -13,7 +28,7 @@ router.route('/signup')
   }))
 //LOGIN ROUTE
 router.route('/login')
-  .get(function (req, res) {
+  .get(authCheck, function (req, res) {
     res.render('users/signin', {
       message: req.flash('loginMessage')
     })
