@@ -5,16 +5,16 @@ var Article = require('../models/article')
 router.route('/articles')
  .get(function (req, res) {
     //res.send(req.user._id)
-    Article.find({user:req.user.id},function (err, allArticles) {
+   Article.find({user: req.user.id}, function (err,allArticles) {
      res.render('articles/index', {allArticles: allArticles})
-    })
+   })
  })
 //INDIVIDUAL ARTICLE PAGE
 router.route('/articles/:id')
 .get(function (req, res) {
   Article.findById(req.params.id, function (err, article) {
     if (err) {
-       //res.flash('something wrong happened' + err)
+      console.log(err)
       res.redirect('/articles')
     } else {
       res.render('articles/soloart', {article: article})

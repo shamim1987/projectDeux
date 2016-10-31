@@ -7,6 +7,7 @@ var flash = require('connect-flash')
 var session = require('express-session')
 var passport = require('passport')
 var MongoStore = require('connect-mongo')(session)
+//var methodOverride = require('method-override')
 var dotenv = require('dotenv')
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
@@ -17,6 +18,7 @@ mongoose.Promise = global.Promise
 
 dotenv.load({ path: '.env.' + process.env.NODE_ENV })
 mongoose.connect(process.env.MONGO_URI)
+//app.use(methodOverride)
 app.use(morgan('dev'))
 app.set('view engine', 'ejs')
 app.use(layout)

@@ -6,7 +6,7 @@
   </div>
 </div>
 
-  <div class="article_container">
+
     <ul>
       <li><strong>Author ID:</strong><%=article.user %></li>
       <li><strong>Title :</strong><%=article.title%></li>
@@ -20,9 +20,9 @@
          <li><strong>Author: </strong><%=comment.author %></li>
          <li><strong>Title: </strong><%=comment.title %></li>
          <li><strong>Body: </strong><%=comment.body %></li>
-         <li><a href="#">Click here to remove this comment</a></li>
+         <li><form method="post" action="/articles/<%=article._id %>/remove-comment" ><button type="submit" name="comment[delete]">Delete comment</button></form>
+         </li>
        </ul>
        <%})%>
      </li>
   </ul>
-  </div>
