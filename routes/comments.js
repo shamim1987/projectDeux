@@ -2,10 +2,16 @@ var express = require('express')
 var router = express.Router()
 var comment = require('../models/comment')
 var Article = require('../models/article')
+var passport = require('passport')
+var flash = require('connect-flash')
 
+function itsAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) { return next() }
+  res.redirect('/login')
+}
 //NEW COMMENT
 router.route('/:id/new-comment')
-      .get(function (req, res) {
+      .get(itsAuthenticated, function (req, res) {
         Article.findById(req.params.id, function (err, article) {
           if (err) {
             console.log(err)
@@ -25,7 +31,7 @@ router.route('/:id/new-comment')
 
 //REMOVE COMMENT
 router.route('/articles/:id/remove-comment')
-     .get(function (req, res) {
+     .get(itsAuthenticated, function (req, res) {
        Article.findById(req.params.id, function (err, article) {
          if (err) {
            console.log(err)
