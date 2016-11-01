@@ -14,3 +14,11 @@ li {
 label {
   float:left;
 }
+
+.ind {
+  margin:0 auto;
+  text-align: center;
+  color: steel;
+
+
+}

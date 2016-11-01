@@ -14,22 +14,22 @@
   </div>
 </div>
 
-    <ul class="ind">
-      <li><strong>Author ID:</strong><%=article.user %></li>
-      <li><strong>Title :</strong><%=article.title%></li>
-      <li><strong>Article: </strong><%=article.body %></li>
-      <li><a href ="/<%=article._id%>/new-comment/">Click here to add a comment</a></li>
-      <li><a href ="/articles/<%=article._id %>/edit">Click here to edit this post</a></li>
-      <li><a href ="/articles/<%=article._id %>/delete" >Click here to delete this post</a></li>
-      <li><strong>Comments : </strong>
-     <%article.comment.forEach(function(comment){%>
-       <ul>
-         <li><strong>Author: </strong><%=comment.author %></li>
-         <li><strong>Title: </strong><%=comment.title %></li>
-         <li><strong>Body: </strong><%=comment.body %></li>
-         <li><form method="post" action="/articles/<%=article._id %>/remove-comment" ><button type="submit" name="comment[delete]">Delete comment</button></form>
-         </li>
-       </ul>
-       <%})%>
+<ul class="ind">
+  <li><strong>Author ID:</strong><%=article.user %></li>
+  <li><strong>Title :</strong><%=article.title%></li>
+  <li><strong>Article: </strong><%=article.body %></li>
+  <li><a href ="/<%=article._id%>/new-comment/">Click here to add a comment</a></li>
+  <li><a href ="/articles/<%=article._id %>/edit">Click here to edit this post</a></li>
+  <li><a href ="/articles/<%=article._id %>/delete" >Click here to delete this post</a></li>
+  <li><strong>Comments : </strong>
+ <%article.comment.forEach(function(comment){%>
+   <ul>
+     <li><strong>Author: </strong><%=comment.author %></li>
+     <li><strong>Title: </strong><%=comment.title %></li>
+     <li><strong>Body: </strong><%=comment.body %></li>
+     <li><form method="post" action="/articles/<%=article._id %>/remove-comment" ><button type="submit" name="comment[delete]">Delete comment</button></form>
      </li>
-  </ul>
+   </ul>
+   <%})%>
+ </li>
+</ul>

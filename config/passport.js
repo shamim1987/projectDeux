@@ -56,7 +56,7 @@ module.exports = function (passport) {
         if (err) return next(err)
         console.log(foundUser)
         if (authenticated) {
-          return next(null, foundUser,req.flash('loginMessage', 'Welcome in!'))
+          return next(null, foundUser,req.flash('loginMessage', 'Everywhere you go you always take the weather with you!'))
         } else {
           return next(null, false, req.flash('loginMessage', 'Password don\'t match'))
         }
